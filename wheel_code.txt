@@ -1,0 +1,26 @@
+import math
+
+# 麦克纳姆轮半径
+wheel_radius = 0.5
+# 麦克纳姆轮间距
+wheel_base = 1.0
+
+# 当前位置（x，y）和目标位置（x，y）
+current_x = 0.0
+current_y = 0.0
+target_x = 10.0
+target_y = 5.0
+
+# 计算两点间的欧几里得距离
+distance = math.sqrt((target_x - current_x) ** 2 + (target_y - current_y) ** 2)
+
+# 计算角度
+angle = math.atan2(target_y - current_y, target_x - current_x)
+
+# 计算左轮和右轮的转速
+left_speed = (2 * distance + wheel_base * angle) / (2 * wheel_radius)
+right_speed = (2 * distance - wheel_base * angle) / (2 * wheel_radius)
+
+# 设置左轮和右轮的速度
+set_left_wheel_speed(left_speed)
+set_right_wheel_speed(right_speed)
